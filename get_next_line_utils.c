@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:38:03 by tlemos-m          #+#    #+#             */
-/*   Updated: 2022/11/28 11:25:27 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2022/12/02 13:07:54 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,27 @@ size_t	ft_strlen(char *s)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i] != '\0')
 		i++;
 	return (i);
+}
+
+char	*ft_strchr(char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (unsigned char) c)
+			break ;
+		i++;
+	}
+	if (s[i] == (unsigned char) c)
+		return (&s[i]);
+	return (NULL);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -32,9 +50,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = 0;
 	l1 = ft_strlen(s1);
 	l2 = ft_strlen(s2);
-	if (!s2)
-		return (s1);
-	str = malloc(l1 + l2 + 1);
+	str = (char *)malloc(sizeof(char) * (l1 + l2 + 1));
 	if (!str)
 		return (NULL);
 	while (i < (l1 + l2))
@@ -42,55 +58,9 @@ char	*ft_strjoin(char *s1, char *s2)
 		if (i < l1)
 			str[i] = s1[i];
 		else
-			str[i] = s2[i - l1];
+			str[i] = s2[i];
 		i++;
 	}
 	str[i] = '\0';
 	return (str);
-}
-
-char	*ft_strdup(char *s)
-{
-	size_t	i;
-	size_t	len;
-	char	*str;
-
-	i = 0;
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	str = malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (0);
-	while (i < len)
-	{
-		str[i] = s[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-char	*ft_substr(char *s, unsigned int start, size_t len)
-{
-	unsigned int	i;
-	size_t			s_len;
-	char			*sub;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (len > s_len - start)
-		len = s_len - start;
-	sub = malloc((len + 1) * sizeof(char));
-	if (!sub)
-		return (NULL);
-	while (i < len)
-	{
-		sub[i] = s[i + start];
-		i++;
-	}
-	sub[i] = '\0';
-	return (sub);
 }
