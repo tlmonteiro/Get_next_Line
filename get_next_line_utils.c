@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:38:03 by tlemos-m          #+#    #+#             */
-/*   Updated: 2022/12/02 13:07:54 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:20:13 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,50 +17,62 @@ size_t	ft_strlen(char *s)
 	size_t	i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
+	while (s && s[i] != '\0' && s[i] != '\n')
+		i++;
+	if (s && s[i] == '\n')
 		i++;
 	return (i);
-}
-
-char	*ft_strchr(char *s, char c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (unsigned char) c)
-			break ;
-		i++;
-	}
-	if (s[i] == (unsigned char) c)
-		return (&s[i]);
-	return (NULL);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
 	size_t	i;
-	size_t	l1;
-	size_t	l2;
+	size_t	j;
 
 	i = 0;
-	l1 = ft_strlen(s1);
-	l2 = ft_strlen(s2);
-	str = (char *)malloc(sizeof(char) * (l1 + l2 + 1));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
-		return (NULL);
-	while (i < (l1 + l2))
+		return (0);
+	while (s1 && s1[i])
 	{
-		if (i < l1)
-			str[i] = s1[i];
-		else
-			str[i] = s2[i];
+		str[i] = s1[i];
 		i++;
 	}
+	j = 0;
+	while (s2[j] != '\n' && s2[j])
+		str[i++] = s2[j++];
+	if (s2[j] == '\n')
+		str[i++] = s2[j];
 	str[i] = '\0';
+	if (s1)
+		free(s1);
 	return (str);
+}
+
+char	*ft_free(char *s)
+{
+	free(s);
+	return (0);
+}
+
+int	check_stretch(char *stretch)
+{
+	int	i;
+	int	j;
+	int	flag;
+
+	i = 0;
+	j = 0;
+	flag = 0;
+	while (stretch[i] && stretch)
+	{
+		if (flag > 0)
+			stretch[j++] = stretch[i];
+		if (stretch[i] == '\n')
+			flag = 1;
+		stretch[i] = '\0';
+		i++;
+	}
+	return (flag);
 }

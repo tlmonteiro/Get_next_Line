@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:38:00 by tlemos-m          #+#    #+#             */
-/*   Updated: 2022/12/02 12:07:41 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:21:02 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # endif
 
 size_t	ft_strlen(char *s);
-char	*ft_strchr(char *s, char c);
 char	*ft_strjoin(char *s1, char *s2);
+char	*ft_free(char *s);
+int		check_stretch(char *stretch);
 char	*get_next_line(int fd);
 
 #endif
