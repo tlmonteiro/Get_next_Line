@@ -6,11 +6,11 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:23:04 by tlemos-m          #+#    #+#             */
-/*   Updated: 2022/12/05 11:23:21 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2022/12/06 11:19:26 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(char *s)
 {

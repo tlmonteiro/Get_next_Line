@@ -6,11 +6,11 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:22:48 by tlemos-m          #+#    #+#             */
-/*   Updated: 2022/12/05 11:29:03 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2022/12/06 11:19:20 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
